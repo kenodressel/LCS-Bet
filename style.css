@@ -1,0 +1,91 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	/*font-size: 18.15px;*/
+	line-height: 1.5;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	color:#303B41;
+	-webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	transition: all 0.4s;
+}
+#wrapper {
+	margin:auto;
+	width:1000px;
+	margin-top:20px;
+	height:100%
+}
+.team {
+	width:35%;
+	margin: 10px 0px;
+	float:left;
+	text-align:center;
+	cursor: pointer;
+}
+.zeit {
+	width:20%;
+	margin: 10px 0px;
+	float:left;
+	text-align:center;
+}
+.derTipp {
+	background:#EDEDED;
+	border:1px solid #EDEDED;
+}
+.vs {
+	width:9%;
+	float:left;
+	margin: 10px 0px;
+}
+#headlist {
+	border-bottom:1px solid #999;
+	width:100%;
+	clear:both;
+	font-weight:bold;
+}
+.weekhead {
+	padding-top:15px;
+}
+#weekgames {
+	text-align:center;
+	padding: 5px 0px;
+}
+.weekselect {
+	margin: 15px 0px;
+}
+.weekselectinput {
+	width:8.5%;
+	height:30px;
+	font-size:15px;
+	background:#EEE;
+	border:1px solid #EDEDED;
+	margin-right:5px;
+}
+.dW {
+	border:1px solid #099acb;
+	background: #099acb;
+}
+.win {
+	border: 1px solid green;
+}
+.lose {
+	border: 1px solid red;
+}
+#gamewrap {
+	width:100%;
+	clear:both;
+}
+.locked {
+	cursor:auto;
+}
+#winel {
+	float:left;
+	width:25%;
+}
+
+#winline {
+	clear:both;
+	width:100%;
+}
