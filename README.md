@@ -5,13 +5,15 @@ This is an open source betting system. There is currently no "value" of games. Y
 
 Please note: this is nowhere a complete version. It was literally programmed over one night since the LCS is already in week 3.
 
-#Installation and setup
-Here are the things you need:
+##Installation and setup
+
+###Here are the things you need:
 - Webserver with MySQL and PHP (you can also use your pc: [XAMPP](www.apachefriends.org))
 - Basic knowledge in MySQL (you can get it work by googling)
 - ~30 Mins
 
-The installation steps are:
+###The installation steps are:
+
 1. Download ("Download ZIP") or clone the repository
 2. If you dont have your webserver going, google now, how to do it
 3. Enter your MySQL details in connect.php
@@ -21,4 +23,3 @@ The installation steps are:
 7. The user with the id = 1 should be an admin account, it will be used to enter wins
 8. Add all others users and their passwords hashed with md5
 9. Done.
-
