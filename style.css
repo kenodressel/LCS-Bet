@@ -11,11 +11,43 @@ body {
 	-o-transition: all 0.4s;
 	transition: all 0.4s;
 }
+a {
+	color: #099acb;
+	text-decoration:none;
+}
 #wrapper {
 	margin:auto;
 	width:1000px;
 	margin-top:20px;
 	height:100%
+}
+.logininput  { 
+	font-size: 16px;
+	font-weight:300;
+	color: #707070;
+	margin-bottom:3px;
+	vertical-align: bottom;
+	border:none;
+	outline:none;
+}
+.login-border-bottom {
+	width:20%;
+	float:left;
+	border-bottom:1px solid #CCC;
+	margin-left:5px;
+}
+.logout {
+	background:none;
+	color: #099acb;
+	text-decoration:none;
+	border:none;
+	font-size:16px;
+	margin:0px;
+	padding:0px;
+	cursor: pointer;
+}
+.login {
+	padding-top:5px;
 }
 .team {
 	width:35%;

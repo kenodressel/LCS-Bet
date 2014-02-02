@@ -1,5 +1,6 @@
 <?php
 include("connect.php");
+include("header.php");
 
 function draw() {
 
@@ -84,22 +85,7 @@ update();
 <body>
 <div id="wrapper">
 	<div id="header">
-<?php 
-if($_SESSION['login']) {
-	//logged in - logout
-	echo "<span>Hello ".$_SESSION['name']."</span>";
-	echo '<form name="logout" action="'.$_SERVER['PHP_SELF'].'" method="post">
-			<input type="submit" name="logout" value="Ausloggen" /> 
-		</form>';
-	echo "<br>";
-} else  {
-	//login
-	echo '<form name="login" action="'.$_SERVER['PHP_SELF'].'" method="post">
-			<input name="user" type="text" />
-			<input name="pw" type="password" />
-			<input type="submit" value="Einloggen" /> 
-		</form>';
-} ?>
+<?php drawHead("score") ?>
 	</div>
     <div id="main">
 	<?php draw() ?>

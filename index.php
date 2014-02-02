@@ -1,5 +1,7 @@
-<?
+<?php
+
 include("connect.php");
+include("header.php");
 
 if(isset($_POST["user"])) { //user tries to login
 	$user = $_POST["user"];
@@ -43,7 +45,11 @@ function draw() {
 	
 	//Time
 	$spiele = false; //did a game happen?
-	$TS = strtotime("last Sunday");
+	if(date("N",time()) == 7) {
+		$TS = time();
+	} else {
+		$TS = strtotime("last Sunday");
+	}
 	$zeitraum = strtotime("next Sunday");
 	if(isset($_GET['w'])) { //is a week selected
 		$woche = $_GET['w'];
@@ -53,21 +59,27 @@ function draw() {
 	}
 	$erg = mysql_query($abfrage);
 	
-	//All Weeks Header
-	echo "<div class='weekselect'>
-			<form name='login' action='".$_SERVER['PHP_SELF']."' method='get'>";
-				for($a = 1; $a < 12;$a++) {
-					if(isset($_GET['w']) && $_GET['w'] == $a) {
-						$thisWeek = " dW";
-					} else {
-						$thisWeek = "";
-					}
-					echo "<input class='weekselectinput".$thisWeek."' type='submit' value='".$a."' name='w' />";
-				}
-	echo 		"</form>
-		</div>";
+	$first = 0;
 	
 	while($timerow = mysql_fetch_array($erg, MYSQL_ASSOC)) {
+		if($first == 0) {
+			//All Weeks Header
+			echo "<div class='weekselect'>
+					<form name='login' action='".$_SERVER['PHP_SELF']."' method='get'>";
+						for($a = 1; $a < 12;$a++) {
+							if(isset($_GET['w']) && $_GET['w'] == $a) {
+								$thisWeek = "dW";
+							} elseif($timerow["week"] == $a) {
+								$thisWeek = "dW";
+							} else {
+								$thisWeek = "";
+							}
+							echo "<input class='weekselectinput ".$thisWeek."' type='submit' value='".$a."' name='w' />";
+						}
+			echo 		"</form>
+				</div>";
+			$first++;
+		}
 		for($i = 1; $i <= $timerow['tage']; $i++) {
 			//Weekhead
 			echo '<div id="headlist">
@@ -136,6 +148,19 @@ function draw() {
 		}
 	}
 	if(!$spiele) { //no active games
+			//All week header
+			echo "<div class='weekselect'>
+					<form name='login' action='".$_SERVER['PHP_SELF']."' method='get'>";
+						for($a = 1; $a < 12;$a++) {
+							if(isset($_GET['w']) && $_GET['w'] == $a) {
+								$thisWeek = " dW";
+							} else {
+								$thisWeek = "";
+							}
+							echo "<input class='weekselectinput".$thisWeek."' type='submit' value='".$a."' name='w' />";
+						}
+			echo 		"</form>
+				</div>";
 			echo "<div class='fullspan'>\n";
 			echo "<span style='font-size:16px; color:#707070'>Diese Woche keine Spiele</span>\n";
 			echo "</div>";
@@ -161,20 +186,7 @@ if ($_POST) {
 <body>
 <div id="wrapper">
 	<div id="header">
-<?php 
-if($_SESSION['login']) { //user is logged in
-	echo "<span>Hallo ".$_SESSION['name']."  <a href='highscore.php'>(Highscore)</a></span>";
-	echo '<form name="logout" action="'.$_SERVER['PHP_SELF'].'" method="post">
-			<input type="submit" name="logout" value="Ausloggen" /> 
-		</form>';
-	echo "<br>";
-} else  { //login
-  echo '<form name="login" action="'.$_SERVER['PHP_SELF'].'" method="post">
-			<input name="user" type="text" />
-			<input name="pw" type="password" />
-			<input type="submit" value="Einloggen" /> 
-		</form>';
-} ?>
+	<?php drawHead("main"); ?>
 	</div>
     <div id="main">
     
