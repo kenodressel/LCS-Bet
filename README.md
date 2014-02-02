@@ -12,7 +12,7 @@ Here are the things you need:
 - ~30 Mins
 
 The installation steps are:
-1. Download ("Download ZIP") or clone the repository 
+1. Download ("Download ZIP") or clone the repository
 2. If you dont have your webserver going, google now, how to do it
 3. Enter your MySQL details in connect.php
 4. Upload all files from the ZIP to your webserver
