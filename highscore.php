@@ -14,9 +14,9 @@ function draw() {
 	//Headerline
 	echo "<div id='winline'>
 			<div id='winel'>User</div>
-			<div id='winel'>Richtig</div>
-			<div id='winel'>Falsch</div>
-			<div id='winel'>Gesamt</div>
+			<div id='winel'>Correct</div>
+			<div id='winel'>Wrong</div>
+			<div id='winel'>Total</div>
 		</div>";
 	//Scores
 	$abfrage = "SELECT * FROM score ORDER BY win DESC";
@@ -43,7 +43,7 @@ function update() {
 	$spiele = array();
 	$abfrage = "SELECT * FROM spiele ORDER BY id";
 	$erg = mysql_query($abfrage);
-	while($row = mysql_fetch_array($erg, MYSQL_ASSOC)){
+	while($row = mysql_fetch_array($erg, MYSQL_ASSOC)){ //Get the winner team
 		$spiele[$row['id']] = $row['wt'];
 	}
 	
@@ -54,16 +54,20 @@ function update() {
 		$uid = $urow['id'];
 		$abfrage = "SELECT * FROM tipp WHERE user = '$uid' ORDER BY id";
 		$erg2 = mysql_query($abfrage);
+		//reset
 		$winscore = 0;
 		$losescore = 0;
+		$rest = 0;
 		while($row = mysql_fetch_array($erg2, MYSQL_ASSOC)){ //Calculate the data
 			if($spiele[$row['id_sp']] == $row['team']) {
 				$winscore++;
-			} else {
+			} elseif($spiele[$row['id_sp']] != 0) {
 				$losescore++;
+			} else {
+				$rest++;
 			}
 		}
-		$score = $winscore + $losescore;
+		$score = $winscore + $losescore + $rest;
 		//Update the database
 		$eintrag = "UPDATE score SET win='$winscore', lose='$losescore', ges='$score' WHERE user = '$uid'";
 		$update = mysql_query($eintrag);

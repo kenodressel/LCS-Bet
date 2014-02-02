@@ -83,11 +83,11 @@ function draw() {
 		for($i = 1; $i <= $timerow['tage']; $i++) {
 			//Weekhead
 			echo '<div id="headlist">
-				<div class="weekhead">Week '.$timerow['week'].' Tag '.$i.' ('.date("d.m.Y",$timerow['timestamp']+86400*($i-1)).')</div>
+				<div class="weekhead">Week '.$timerow['week'].' Day '.$i.' ('.date("d.m.Y",$timerow['timestamp']+86400*($i-1)).')</div>
 				<div class="team locked">Team 1</div>
 				<div class="vs">&nbsp;</div>
 				<div class="team locked">Team 2</div>
-				<div class="zeit">Uhrzeit</div>
+				<div class="zeit">Time</div>
 			</div>';
 			$week = $timerow['week'];
 			$day = $i;
