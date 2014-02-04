@@ -30,6 +30,13 @@ a {
 	border:none;
 	outline:none;
 }
+.hover:hover{
+	border:1px solid #CBCCCC;
+	-webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	transition: all 0.4s;
+}
 .login-border-bottom {
 	width:20%;
 	float:left;
@@ -51,10 +58,12 @@ a {
 }
 .team {
 	width:35%;
-	margin: 10px 0px;
+	padding: 9px 0px;
+	margin: 1px 0px;
 	float:left;
 	text-align:center;
 	cursor: pointer;
+	border:1px solid #FFF;
 }
 .zeit {
 	width:20%;
@@ -120,4 +129,17 @@ a {
 #winline {
 	clear:both;
 	width:100%;
+}
+#successTip {
+	background:#099acb;
+	-webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	transition: all 0.4s;
+	position:absolute;
+	left:45%;
+	height:25px;
+	width:200px;
+	top:2%;
+	text-align:center;
 }

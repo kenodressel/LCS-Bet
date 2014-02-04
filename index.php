@@ -131,13 +131,13 @@ function draw() {
 				if(($timerow['timestamp']+3600*$x+86400*($i-1)) < time()) { //Is the game already over? --> deactivate tipp
 					echo "<div class='team ".$class1." locked' id='".$row["id"].$row["t1"]."'>".$teams[$row["t1"]]."</div>";
 				} else { //the game is still active
-					echo "<div class='team ".$class1."' id='".$row["id"].".".$row["t1"]."' onclick='tipp(".$row["id"].",".$row["t1"].",".$row["t2"].",".$aktiv1.",".$tippT.",".$_SESSION['uid'].")'>".$teams[$row["t1"]]."</div>";
+					echo "<div class='team hover ".$class1."' id='".$row["id"].".".$row["t1"]."' onclick='tipp(".$row["id"].",".$row["t1"].",".$row["t2"].",".$aktiv1.",".$tippT.",".$_SESSION['uid'].")'>".$teams[$row["t1"]]."</div>";
 				}
 				echo "<div class='vs'>vs</div>";
 				if(($timerow['timestamp']+3600*$x+86400*($i-1)) < time()) {
 					echo "<div class='team ".$class2." locked' id='".$row["id"].$row["t2"]."'>".$teams[$row["t2"]]."</div>";
 				} else {
-					echo "<div class='team ".$class2."' id='".$row["id"].".".$row["t2"]."' onclick='tipp(".$row["id"].",".$row["t2"].",".$row["t1"].",".$aktiv2.",".$tippT.",".$_SESSION['uid'].")'>".$teams[$row["t2"]]."</div>";
+					echo "<div class='team hover ".$class2."' id='".$row["id"].".".$row["t2"]."' onclick='tipp(".$row["id"].",".$row["t2"].",".$row["t1"].",".$aktiv2.",".$tippT.",".$_SESSION['uid'].")'>".$teams[$row["t2"]]."</div>";
 				}
 				//echo time
 				echo "<div class='zeit'>".date("H:i",$timerow['timestamp']+3600*$x)."</div>";
@@ -189,9 +189,11 @@ if ($_POST) {
 	<?php drawHead("main"); ?>
 	</div>
     <div id="main">
-    
 	<?php draw() ?>
     </div>
+</div>
+<div id="successTip" style="display:none" onclick="display(this)">
+	<span class="successTipText">Tipp #<span id="tipnr"></span> gespeichert</span>
 </div>
 </body>
 </html>
