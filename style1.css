@@ -38,7 +38,7 @@ a {
 	transition: all 0.4s;
 }
 .login-border-bottom {
-	width:20%;
+	width:40%;
 	float:left;
 	border-bottom:1px solid #CCC;
 	margin-left:5px;
@@ -57,7 +57,7 @@ a {
 	padding-top:5px;
 }
 .team {
-	width:35%;
+	width:30%;
 	padding: 9px 0px;
 	margin: 1px 0px;
 	float:left;
@@ -66,10 +66,16 @@ a {
 	border:1px solid #FFF;
 }
 .zeit {
-	width:20%;
+	width:15%;
 	margin: 10px 0px;
 	float:left;
 	text-align:center;
+}
+.vod {
+	width:15%;
+	float:left;
+	text-align:center;
+	margin: 10px 0px;
 }
 .derTipp {
 	background:#EDEDED;
@@ -102,7 +108,9 @@ a {
 	font-size:15px;
 	background:#EEE;
 	border:1px solid #EDEDED;
+	border:none;
 	margin-right:5px;
+	font:
 }
 .dW {
 	border:1px solid #099acb;
@@ -142,4 +150,38 @@ a {
 	width:200px;
 	top:2%;
 	text-align:center;
+}
+#headerhalf{
+	width:50%;
+	float:left;
+	height:50px;
+}
+#header{
+	clear:both;
+}
+#spoiler, #theme{
+	background:#EDEDED;
+	height:30px;
+	width:120px;
+	float:right;
+}
+.spoilerChoose {
+	background:#099acb;
+	height:22px;
+	width:58px;
+	margin:1px;
+	padding:3px 0px;
+	text-align: center;
+}
+.spoilerTxt {
+	margin:3px;
+	padding-top:8px;
+	line-height:1.5;
+	vertical-align:text-bottom;
+}
+.option {
+	float:right;
+	margin-right:10px;
+	width:40%;
+	text-align:left;
 }

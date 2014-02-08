@@ -5,10 +5,10 @@ function drawHead($src) {
 	} elseif($src == "score") {
 		$backlink = "<a href='index.php'>Homepage</a>";
 	}
-
+	echo "<div id='headerhalf'>";
 	if(isset($_SESSION['login']) && $_SESSION['login']) { //user is logged in
 		echo '<form name="logout" action="'.$_SERVER['PHP_SELF'].'" method="post">';
-			echo "<span>Hello ".$_SESSION['name']." - ".$backlink." - </span>";
+			echo "<span class='welcome'>Hello ".$_SESSION['name']." - ".$backlink." - </span>";
 			echo '<input type="submit" class="logout" name="logout" value="Logout" /> 
 			</form>';
 		echo "<br>";
@@ -20,5 +20,39 @@ function drawHead($src) {
 			</form>
 			<br>';
 	}
+	echo "</div>";
+	echo "<div id='headerhalf' style='text-align:right'>";
+	if(isset($_SESSION['login']) && $_SESSION['login']) {
+		echo "<div class='option'>";
+		echo "<span class='spoilerTxt'>Theme: </span>";
+		echo "<div id='spoiler' onclick='spoilerToggle(".$_SESSION['uid'].",1)'>";
+		echo "	<div id='themeChoose' class='spoilerChoose'";
+		if($_SESSION['theme'] == 1) {
+			echo "style='float:right'>";
+			echo "Off";
+		} else {
+			echo "style='float:left'>";
+			echo "On";
+		}
+		echo "</div></div>";
+		echo "</div>";
+		echo "<div class='option'>";
+		echo "<span class='spoilerTxt'>Spoiler: </span>";
+		echo "<div id='spoiler' onclick='spoilerToggle(".$_SESSION['uid'].",0)'>";
+		echo "<div id='spoilerChoose' class='spoilerChoose'";
+		if($_SESSION['spoiler'] == 1) {
+			echo "style='float:right'>";
+			echo "Off";
+		} else {
+			echo "style='float:left'>";
+			echo "On";
+		}
+		echo "</div></div>";
+		echo "</div>";
+	} else {
+		echo "<span>&nbsp;</span>";
+	}
+	echo "<br>";
+	echo "</div>";
 }
 ?>

@@ -13,6 +13,8 @@ if(isset($_POST["user"])) { //user tries to login
 			$_SESSION['login'] = true;
 			$_SESSION['name'] = $row['name'];
 			$_SESSION['uid'] = $row['id'];
+			$_SESSION['spoiler'] = $row['spoiler'];
+			$_SESSION['theme'] = $row['theme'];
 		} else { //failed login, no notification yet
 			$_SESSION['login'] = false;	
 		}
@@ -65,7 +67,7 @@ function draw() {
 		if($first == 0) {
 			//All Weeks Header
 			echo "<div class='weekselect'>
-					<form name='login' action='".$_SERVER['PHP_SELF']."' method='get'>";
+					<form name='ws' action='".$_SERVER['PHP_SELF']."' method='get'>";
 						for($a = 1; $a < 12;$a++) {
 							if(isset($_GET['w']) && $_GET['w'] == $a) {
 								$thisWeek = "dW";
@@ -88,6 +90,7 @@ function draw() {
 				<div class="vs">&nbsp;</div>
 				<div class="team locked">Team 2</div>
 				<div class="zeit">Time</div>
+				<div class="vod">VoD</div>
 			</div>';
 			$today = $timerow['timestamp']-15000+86400*($i-1); //-15000 for earlier games
 			$tomorrow = $today + 40000;//avoid overlapping game times on the next day
@@ -108,21 +111,18 @@ function draw() {
 					if($tippid[$row['id']] != 0 && $tippteam[$row["id"]] == $row["t1"]) { //is team1 the tipped team?
 						$aktiv1 = 1;
 						$class1 = "derTipp";
-						if($row["t1"] == $row["wt"]) { //the tip was right
-							$class1 .= " win";
-						} else if($row["t2"] == $row["wt"]) { //the tip was wrong
-							$class1 .= " lose";
-						}
 						$tippT = $tippid[$row["id"]]; //give the tippid
 					} elseif($tippid[$row['id']] != 0 && $tippteam[$row["id"]] == $row["t2"]) {
 						$aktiv2 = 1;
 						$class2 = "derTipp";
 						$tippT = $tippid[$row["id"]];
-						if($row["t2"] == $row["wt"]) {
-							$class2 .= " win";
-						} else if($row["t1"] == $row["wt"]) {
-							$class2 .= " lose";
-						}
+					}
+					if($row["t1"] == $row["wt"] && $_SESSION['spoiler'] == 0) { //the tip was right
+						$class1 .= " win";
+						$class2 .= " lose";
+					} else if($row["t2"] == $row["wt"] && $_SESSION['spoiler'] == 0) { //the tip was wrong
+						$class1 .= " lose";
+						$class2 .= " win";
 					}
 				} else { //user is not logged in
 					$_SESSION['uid'] = -1; 
@@ -141,6 +141,11 @@ function draw() {
 				}
 				//echo time
 				echo "<div class='zeit'>".date("H:i",$row['ts'])."</div>";
+				echo "<div class='vod'>";
+				if($row["vod"] != "") {
+					echo "<a target='_blank' href='".$row["vod"]."'>Youtube</a>";
+				}
+				echo "</div>";
 				echo "</div>";
 				$x++;
 			}
@@ -176,14 +181,9 @@ if ($_POST) {
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="style.css" type="text/css">
-<link rel="shortcut icon" href="http://ardobras.de/wp/wp-content/themes/ArdobrasBlogDesign/images/favicon.ico">
-<link href="https://fonts.googleapis.com/css?family=Roboto:700,500,400,300,100" rel="stylesheet" type="text/css">
-<script src="js.js" type="text/javascript"></script>
-<title>LCS TippSpiel</title>
+<?php include("meta.php"); ?>
 </head>
-<body>
+<body onload="runUpdate()">
 <div id="wrapper">
 	<div id="header">
 	<?php drawHead("main"); ?>

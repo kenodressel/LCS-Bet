@@ -60,3 +60,43 @@ function win(gameid,teamid,team2id,aktiv) {
 function display(element) {
 	element.style.display = "none";
 }
+
+function spoilerToggle(uid,which) {
+	if(which == 0) {
+		var el = document.getElementById("spoilerChoose");
+	} else if(which == 1) {
+		var el = document.getElementById("themeChoose");
+	}
+	var value;
+	var spoiler;
+	if(el.style.float == "right") {
+		value = "left";
+		spoiler = 0;
+	} else {
+		value = "right";
+		spoiler = 1;
+	}
+	var ajaxEl = new XMLHttpRequest();
+	ajaxEl.onreadystatechange = function(){
+		if(ajaxEl.readyState == 4 && ajaxEl.status == 200) { //wait till ajax is finished
+			location.reload();
+		}
+	};
+	//send ajax
+	ajaxEl.open('GET', 'ajax.php?fn=spoiler&user='+uid+'&spoiler='+spoiler+'&which='+which, true);
+	ajaxEl.send();
+}
+
+function runUpdate() {
+	var ajaxEl = new XMLHttpRequest();
+	ajaxEl.onreadystatechange = function(){
+		if(ajaxEl.readyState == 4 && ajaxEl.status == 200) { //wait till ajax is finished
+			if(ajaxEl.responseText == "update") {
+				location.reload();
+			}
+		}
+	};
+	//send ajax
+	ajaxEl.open('GET', 'ajax.php?fn=update', true);
+	ajaxEl.send();
+}
