@@ -1,0 +1,216 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	/*font-size: 18.15px;*/
+	line-height: 1.5;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	color:#fff;
+	-webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	transition: all 0.4s;
+	background: url("pic/Front1.jpg")  no-repeat;
+	background-position:center top;
+}
+a {
+	color: #099acb;
+	text-decoration:none;
+}
+#wrapper {
+	margin:auto;
+	width:1000px;
+	margin-top:174px;
+	height:100%
+}
+.logininput  { 
+	font-size: 16px;
+	font-weight:300;
+	color: #707070;
+	margin-bottom:3px;
+	vertical-align: bottom;
+	border:none;
+	outline:none;
+}
+.hover:hover{
+	border:1px solid #CBCCCC;
+	-webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	transition: all 0.4s;
+}
+.login-border-bottom {
+	width:20%;
+	float:left;
+	border-bottom:1px solid #CCC;
+	margin-left:5px;
+}
+.logout {
+	background:none;
+	color: #099acb;
+	text-decoration:none;
+	border:none;
+	font-size:16px;
+	margin:0px;
+	padding:0px;
+	cursor: pointer;
+}
+.login {
+	padding-top:5px;
+}
+.team {
+	width:30%;
+	padding: 9px 0px;
+	margin: 1px 0px;
+	float:left;
+	text-align:center;
+	cursor: pointer;
+	border:1px solid #fff;
+}
+.team1{
+	width:30%;
+	padding: 9px 0px;
+	margin: 1px 0px;
+	float:left;
+	text-align:right;
+	cursor: pointer;
+	border:1px solid #fff;
+}
+.team2{
+	width:30%;
+	padding: 9px 0px;
+	margin: 1px 0px;
+	float:left;
+	text-align:left;
+	cursor: pointer;
+	border:1px solid #fff;
+}
+.zeit {
+	width:15%;
+	margin: 10px 0px;
+	float:left;
+	text-align:center;
+}
+.vod {
+	width:15%;
+	float:left;
+	text-align:center;
+	margin: 10px 0px;
+}
+.derTipp {
+	background:#EDEDED;
+	border:1px solid #EDEDED;
+}
+.vs {
+	width:9%;
+	float:left;
+	margin: 10px 0px;
+}
+#headlist {
+	border-bottom:1px solid #999;
+	width:100%;
+	clear:both;
+	font-weight:bold;
+}
+.weekhead {
+	padding-top:15px;
+}
+#weekgames {
+	text-align:center;
+	padding: 5px 0px;
+}
+.weekselect {
+	margin: 15px 0px;
+	margin-top:30px;
+
+}
+.weekselectinput {
+	width:8.5%;
+	height:30px;
+	font-size:15px;
+	/*background:#EEE;*/
+	background:url("pic/Button2.png") no-repeat;
+	/*border:1px solid #EDEDED;*/
+	border:none;
+	color:#fff;
+	margin-right:5px;
+	font:
+}
+.dW {
+	border:1px solid #099acb;
+	background: #099acb;
+}
+.win {
+	border: 1px solid green;
+}
+.lose {
+	border: 1px solid red;
+}
+#gamewrap {
+	width:100%;
+	clear:both;
+}
+.locked {
+	cursor:auto;
+}
+#winel {
+	float:left;
+	width:25%;
+}
+
+#winline {
+	clear:both;
+	width:100%;
+}
+#successTip {
+	background:#099acb;
+	-webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	transition: all 0.4s;
+	position:absolute;
+	left:45%;
+	height:25px;
+	width:200px;
+	top:2%;
+	text-align:center;
+}
+#headerhalf{
+	width:50%;
+	float:left;
+	height:50px;
+}
+#header{
+	clear:both;
+	height:43px;
+}
+#spoiler, #theme{
+ background:#EDEDED;
+ height:30px;
+ width:120px;
+ float:right;
+}
+.spoilerChoose {
+ background:#099acb;
+ height:22px;
+ width:58px;
+ margin:1px;
+ padding:3px 0px;
+ text-align: center;
+}
+.spoilerTxt {
+ margin:3px;
+ padding-top:8px;
+ line-height:2;
+ vertical-align:text-bottom;
+}
+.option {
+ float:right;
+ margin-right:10px;
+ width:40%;
+ text-align:left;
+}
+.welcome {
+	color:#fff;
+	line-height:2;
+}

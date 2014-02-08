@@ -129,15 +129,15 @@ function draw() {
 				}
 				echo "<div id='gamewrap'>";
 				if($row['ts'] < time()) { //Is the game already over? --> deactivate tipp
-					echo "<div class='team ".$class1." locked' id='".$row["id"].$row["t1"]."'>".$teams[$row["t1"]]."</div>";
+					echo "<div class='team team1 ".$class1." locked' id='".$row["id"].$row["t1"]."'>".$teams[$row["t1"]]."</div>";
 				} else { //the game is still active
-					echo "<div class='team hover ".$class1."' id='".$row["id"].".".$row["t1"]."' onclick='tipp(".$row["id"].",".$row["t1"].",".$row["t2"].",".$aktiv1.",".$tippT.",".$_SESSION['uid'].")'>".$teams[$row["t1"]]."</div>";
+					echo "<div class='team team1 hover ".$class1."' id='".$row["id"].".".$row["t1"]."' onclick='tipp(".$row["id"].",".$row["t1"].",".$row["t2"].",".$aktiv1.",".$tippT.",".$_SESSION['uid'].")'>".$teams[$row["t1"]]."</div>";
 				}
 				echo "<div class='vs'>vs</div>";
 				if($row['ts'] < time()){
-					echo "<div class='team ".$class2." locked' id='".$row["id"].$row["t2"]."'>".$teams[$row["t2"]]."</div>";
+					echo "<div class='team team2 ".$class2." locked' id='".$row["id"].$row["t2"]."'>".$teams[$row["t2"]]."</div>";
 				} else {
-					echo "<div class='team hover ".$class2."' id='".$row["id"].".".$row["t2"]."' onclick='tipp(".$row["id"].",".$row["t2"].",".$row["t1"].",".$aktiv2.",".$tippT.",".$_SESSION['uid'].")'>".$teams[$row["t2"]]."</div>";
+					echo "<div class='team team2 hover ".$class2."' id='".$row["id"].".".$row["t2"]."' onclick='tipp(".$row["id"].",".$row["t2"].",".$row["t1"].",".$aktiv2.",".$tippT.",".$_SESSION['uid'].")'>".$teams[$row["t2"]]."</div>";
 				}
 				//echo time
 				echo "<div class='zeit'>".date("H:i",$row['ts'])."</div>";

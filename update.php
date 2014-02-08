@@ -44,8 +44,6 @@ function updateWinner($start) {
 	$ts = time();
 	$eintrag = "UPDATE `update` SET ts='$ts', tID='$start' WHERE name = 'winner'";
 	$update = mysql_query($eintrag);
-	
-	
 }
 
 function updateHighscore() {
@@ -135,5 +133,26 @@ function updateVod($ts) {
 	}
 	$ts = time();
 	$eintrag = "UPDATE `update` SET ts='$ts', tID='$first' WHERE name = 'vod'";
+	$update = mysql_query($eintrag);
+}
+
+function updateStandings() {
+	while($start < 1912) {
+		$jGameStr = 'http://na.lolesports.com/api/match/'.$start.'.json';
+		$jGameData = file_get_contents($jGameStr);
+		$jGameArr = json_decode($jGameData,true);
+		if($jGameArr["winnerId"] != "") {
+			$team = $jGameArr["winnerId"];
+			$id = $jGameArr["winnerId"];
+			$eintrag = "UPDATE spiele SET wt='$team' WHERE id = '$start'";
+			$update = mysql_query($eintrag);
+		} else {
+			break;
+		}
+		$start++;
+	}
+	
+	$ts = time();
+	$eintrag = "UPDATE `update` SET ts='$ts', tID='$start' WHERE name = 'winner'";
 	$update = mysql_query($eintrag);
 }
