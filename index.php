@@ -29,7 +29,7 @@ function draw() {
 	$abfrage = "SELECT * FROM team ORDER BY id";
 	$erg = mysql_query($abfrage);
 	while($row = mysql_fetch_array($erg, MYSQL_ASSOC)){
-		$teams[$row['id']] = $row['name'];
+		$teams[$row['rID']] = $row['name'];
 	}
 	
 	//Tipps
@@ -89,9 +89,9 @@ function draw() {
 				<div class="team locked">Team 2</div>
 				<div class="zeit">Time</div>
 			</div>';
-			$week = $timerow['week'];
-			$day = $i;
-			$abfrage2 = "SELECT * FROM spiele WHERE week = '$week' AND day = '$day' ORDER BY timestamp"; //Get the games of the week
+			$today = $timerow['timestamp']-15000+86400*($i-1); //-15000 for earlier games
+			$tomorrow = $today + 40000;//avoid overlapping game times on the next day
+			$abfrage2 = "SELECT * FROM spiele WHERE ts BETWEEN '$today' AND '$tomorrow' ORDER BY ts"; //Get the games of the week
 			$erg2 = mysql_query($abfrage2);
 			$x = 0;
 			echo "<div id='weekgames'>";
@@ -128,19 +128,19 @@ function draw() {
 					$_SESSION['uid'] = -1; 
 				}
 				echo "<div id='gamewrap'>";
-				if(($timerow['timestamp']+3600*$x+86400*($i-1)) < time()) { //Is the game already over? --> deactivate tipp
+				if($row['ts'] < time()) { //Is the game already over? --> deactivate tipp
 					echo "<div class='team ".$class1." locked' id='".$row["id"].$row["t1"]."'>".$teams[$row["t1"]]."</div>";
 				} else { //the game is still active
 					echo "<div class='team hover ".$class1."' id='".$row["id"].".".$row["t1"]."' onclick='tipp(".$row["id"].",".$row["t1"].",".$row["t2"].",".$aktiv1.",".$tippT.",".$_SESSION['uid'].")'>".$teams[$row["t1"]]."</div>";
 				}
 				echo "<div class='vs'>vs</div>";
-				if(($timerow['timestamp']+3600*$x+86400*($i-1)) < time()) {
+				if($row['ts'] < time()){
 					echo "<div class='team ".$class2." locked' id='".$row["id"].$row["t2"]."'>".$teams[$row["t2"]]."</div>";
 				} else {
 					echo "<div class='team hover ".$class2."' id='".$row["id"].".".$row["t2"]."' onclick='tipp(".$row["id"].",".$row["t2"].",".$row["t1"].",".$aktiv2.",".$tippT.",".$_SESSION['uid'].")'>".$teams[$row["t2"]]."</div>";
 				}
 				//echo time
-				echo "<div class='zeit'>".date("H:i",$timerow['timestamp']+3600*$x)."</div>";
+				echo "<div class='zeit'>".date("H:i",$row['ts'])."</div>";
 				echo "</div>";
 				$x++;
 			}

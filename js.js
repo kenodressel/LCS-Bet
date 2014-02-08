@@ -23,7 +23,7 @@ function tipp(gameid,teamid,team2id,aktiv,tippid,uid) {
 					div2.setAttribute("onclick","tipp("+gameid+","+team2id+","+teamid+",0,"+ajaxEl.responseText+","+uid+")");
 									
 					div3.style.display = "block";
-					text.innerHTML = ajaxEl.responseText;
+					text.innerHTML = ajaxEl.responseText +"-"+ teamid;
 					
 				}
 			}
