@@ -145,7 +145,7 @@ a {
 	-o-transition: all 0.4s;
 	transition: all 0.4s;
 	position:absolute;
-	left:45%;
+	left:40%;
 	height:25px;
 	width:200px;
 	top:2%;
@@ -176,7 +176,7 @@ a {
 .spoilerTxt {
 	margin:3px;
 	padding-top:8px;
-	line-height:1.5;
+	line-height:2;
 	vertical-align:text-bottom;
 }
 .option {
