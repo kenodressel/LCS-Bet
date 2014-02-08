@@ -2,28 +2,8 @@
 
 include("connect.php");
 include("header.php");
+include("login.php");
 
-if(isset($_POST["user"])) { //user tries to login
-	$user = $_POST["user"];
-	$abfrage = "SELECT * FROM user WHERE name = '$user'";
-	$erg = mysql_query($abfrage);
-	
-	while($row = mysql_fetch_array($erg, MYSQL_ASSOC)) { //only triggers if valid username
-		if(md5($_POST["pw"]) == $row["pw"]) {//md5 password
-			$_SESSION['login'] = true;
-			$_SESSION['name'] = $row['name'];
-			$_SESSION['uid'] = $row['id'];
-			$_SESSION['spoiler'] = $row['spoiler'];
-			$_SESSION['theme'] = $row['theme'];
-		} else { //failed login, no notification yet
-			$_SESSION['login'] = false;	
-		}
-	}
-}
-//logout
-if(isset($_POST["logout"])) {
-	session_destroy();
-}
 
 function draw() {
 	//Teams
@@ -117,27 +97,33 @@ function draw() {
 						$class2 = "derTipp";
 						$tippT = $tippid[$row["id"]];
 					}
+					$logo1 = "logo".$row["t1"];
+					$logo2 = "logo".$row["t2"];
 					if($row["t1"] == $row["wt"] && $_SESSION['spoiler'] == 0) { //the tip was right
 						$class1 .= " win";
 						$class2 .= " lose";
+						$logo1 .= "win";
+						$logo2 .= "lose";
 					} else if($row["t2"] == $row["wt"] && $_SESSION['spoiler'] == 0) { //the tip was wrong
 						$class1 .= " lose";
 						$class2 .= " win";
+						$logo2 .= "win";
+						$logo1 .= "lose";
 					}
 				} else { //user is not logged in
 					$_SESSION['uid'] = -1; 
 				}
 				echo "<div id='gamewrap'>";
 				if($row['ts'] < time()) { //Is the game already over? --> deactivate tipp
-					echo "<div class='team team1 ".$class1." locked' id='".$row["id"].$row["t1"]."'>".$teams[$row["t1"]]."</div>";
+					echo "<div class='team team1 ".$logo1." ".$class1." locked' id='".$row["id"].$row["t1"]."'>".$teams[$row["t1"]]."</div>";
 				} else { //the game is still active
-					echo "<div class='team team1 hover ".$class1."' id='".$row["id"].".".$row["t1"]."' onclick='tipp(".$row["id"].",".$row["t1"].",".$row["t2"].",".$aktiv1.",".$tippT.",".$_SESSION['uid'].")'>".$teams[$row["t1"]]."</div>";
+					echo "<div class='team team1 hover ".$logo1." ".$class1."' id='".$row["id"].".".$row["t1"]."' onclick='tipp(".$row["id"].",".$row["t1"].",".$row["t2"].",".$aktiv1.",".$tippT.",".$_SESSION['uid'].")'>".$teams[$row["t1"]]."</div>";
 				}
 				echo "<div class='vs'>vs</div>";
 				if($row['ts'] < time()){
-					echo "<div class='team team2 ".$class2." locked' id='".$row["id"].$row["t2"]."'>".$teams[$row["t2"]]."</div>";
+					echo "<div class='team ".$logo2." team2 ".$class2." locked' id='".$row["id"].$row["t2"]."'>".$teams[$row["t2"]]."</div>";
 				} else {
-					echo "<div class='team team2 hover ".$class2."' id='".$row["id"].".".$row["t2"]."' onclick='tipp(".$row["id"].",".$row["t2"].",".$row["t1"].",".$aktiv2.",".$tippT.",".$_SESSION['uid'].")'>".$teams[$row["t2"]]."</div>";
+					echo "<div class='team hover ".$logo2." team2 ".$class2."' id='".$row["id"].".".$row["t2"]."' onclick='tipp(".$row["id"].",".$row["t2"].",".$row["t1"].",".$aktiv2.",".$tippT.",".$_SESSION['uid'].")'>".$teams[$row["t2"]]."</div>";
 				}
 				//echo time
 				echo "<div class='zeit'>".date("H:i",$row['ts'])."</div>";

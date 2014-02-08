@@ -15,6 +15,9 @@ function update() {
 		} elseif($row['name'] == "vod" && $row['ts']+900 < time()) {
 			updateVod($row['tID']);
 			$done = true;
+		} elseif($row['name'] == "standings" && $row['ts']+900 < time()) {
+			updateStandings();
+			$done = true;
 		}
 	}
 	
@@ -137,22 +140,28 @@ function updateVod($ts) {
 }
 
 function updateStandings() {
-	while($start < 1912) {
-		$jGameStr = 'http://na.lolesports.com/api/match/'.$start.'.json';
-		$jGameData = file_get_contents($jGameStr);
-		$jGameArr = json_decode($jGameData,true);
-		if($jGameArr["winnerId"] != "") {
-			$team = $jGameArr["winnerId"];
-			$id = $jGameArr["winnerId"];
-			$eintrag = "UPDATE spiele SET wt='$team' WHERE id = '$start'";
+	$abfrage = "SELECT * FROM team ORDER BY id";
+	$erg = mysql_query($abfrage);
+	while($Trow = mysql_fetch_array($erg, MYSQL_ASSOC)){ //Get the teams
+		$id = $Trow['rID'];
+		$winscore = 0;
+		$losescore = 0;
+		$abfrage2 = "SELECT * FROM spiele WHERE ((t1='$id') || (t2='$id')) AND wt <> 0"; //Get all games where the team played
+		$erg2 = mysql_query($abfrage2) or die(mysql_error());
+		while($Grow = mysql_fetch_array($erg2, MYSQL_ASSOC)){
+			if($id == $Grow['wt']) {
+				$winscore++;
+			} else {
+				$losescore++;
+			}
+			//Update the database
+			$eintrag = "UPDATE standings SET win='$winscore', lose='$losescore' WHERE team = '$id'";
 			$update = mysql_query($eintrag);
-		} else {
-			break;
+			
 		}
-		$start++;
 	}
 	
 	$ts = time();
-	$eintrag = "UPDATE `update` SET ts='$ts', tID='$start' WHERE name = 'winner'";
+	$eintrag = "UPDATE `update` SET ts='$ts' WHERE name = 'standings'";
 	$update = mysql_query($eintrag);
 }

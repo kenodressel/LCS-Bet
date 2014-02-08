@@ -69,7 +69,7 @@ function spoilerToggle(uid,which) {
 	}
 	var value;
 	var spoiler;
-	if(el.style.float == "right") {
+	if(el.style.cssFloat == "right") {
 		value = "left";
 		spoiler = 0;
 	} else {

@@ -5,32 +5,32 @@ include("login.php");
 
 function draw() {
 	//Userid -> username
-	$user = array();
-	$abfrage = "SELECT * FROM user ORDER BY id";
+	$team = array();
+	$abfrage = "SELECT * FROM team ORDER BY id";
 	$erg = mysql_query($abfrage);
 	while($row = mysql_fetch_array($erg, MYSQL_ASSOC)){
-		$user[$row['id']] = $row['name'];
+		$team[$row['rID']] = $row['name'];
 	}
 	//Headerline
 	echo "<div id='winline'>
 			<div id='rank'>Rank</div>
-			<div id='winel'>User</div>
-			<div id='winel'>Correct</div>
-			<div id='winel'>Wrong</div>
+			<div id='winel'>Team</div>
+			<div id='winel'>Wins</div>
+			<div id='winel'>Losses</div>
 			<div id='winel'>Total</div>
 		</div>";
 	//Scores
-	$abfrage = "SELECT * FROM score ORDER BY win DESC,lose ASC";
+	$abfrage = "SELECT * FROM standings ORDER BY win DESC,lose ASC";
 	$erg = mysql_query($abfrage) or die(mysql_error());
 	$i = 0;
 	while($row = mysql_fetch_array($erg, MYSQL_ASSOC)){
 		$i++;
-		echo "<div id='winline' class='$class'>
+		echo "<div id='winline'>
 				<div id='rank'>".$i.".</div>
-				<div id='winel'>".$user[$row['user']]."</div>
+				<div id='winel'>".$team[$row['team']]."</div>
 				<div id='winel'>".$row['win']."</div>
 				<div id='winel'>".$row['lose']."</div>
-				<div id='winel'>".$row['ges']."</div>
+				<div id='winel'>".($row['win']+$row['lose'])."</div>
 			</div>";
 			
 	}
@@ -44,7 +44,7 @@ function draw() {
 <body onload="runUpdate()">
 <div id="wrapper">
 	<div id="header">
-		<?php drawHead("score") ?>
+		<?php drawHead("standings") ?>
 	</div>
     <div id="main">
 	<?php draw() ?>
