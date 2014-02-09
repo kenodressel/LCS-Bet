@@ -12,7 +12,7 @@ function draw() {
 		$user[$row['id']] = $row['name'];
 	}
 	//Headerline
-	echo "<div id='winline'>
+	echo "<div id='winline' class='titleline'>
 			<div id='rank'>Rank</div>
 			<div id='winel'>User</div>
 			<div id='winel'>Correct</div>

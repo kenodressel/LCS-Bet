@@ -10,7 +10,8 @@ body {
     -moz-transition: all 0.4s;
 	-o-transition: all 0.4s;
 	transition: all 0.4s;
-	background: url("pic/Front1.jpg")  no-repeat;
+	background-image: url("pic/Front1.jpg"), url("pic/unendlich.jpg");
+	background-repeat:no-repeat,repeat-y;
 	background-position:center top;
 }
 a {
@@ -33,11 +34,7 @@ a {
 	outline:none;
 }
 .hover:hover{
-	border:1px solid #CBCCCC;
-	-webkit-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-	-o-transition: all 0.4s;
-	transition: all 0.4s;
+
 }
 .login-border-bottom {
 	width:20%;
@@ -58,32 +55,41 @@ a {
 .login {
 	padding-top:5px;
 }
+.titleline{
+	padding-top:16px;
+	font-size:24px;
+	font-weight:bold;
+	height:15px;
+	color:#ba9056;
+	border:none;
+	margin-bottom:30px;
+}
 .team {
+	height:35px;
 	width:30%;
 	padding: 9px 0px;
 	margin: 1px 0px;
 	float:left;
 	text-align:center;
 	cursor: pointer;
-	border:1px solid #fff;
 }
 .team1{
 	width:30%;
 	padding: 9px 0px;
 	margin: 1px 0px;
 	float:left;
-	text-align:right;
+	text-align:center;
 	cursor: pointer;
-	border:1px solid #fff;
+	background-position:right !important;
 }
 .team2{
 	width:30%;
 	padding: 9px 0px;
 	margin: 1px 0px;
 	float:left;
-	text-align:left;
+	text-align:center;
 	cursor: pointer;
-	border:1px solid #fff;
+	
 }
 .zeit {
 	width:15%;
@@ -98,8 +104,9 @@ a {
 	margin: 10px 0px;
 }
 .derTipp {
-	background:#EDEDED;
-	border:1px solid #EDEDED;
+	font-size:17px;
+	font-weight:bold;
+	color:#ba9056;
 }
 .vs {
 	width:9%;
@@ -107,15 +114,17 @@ a {
 	margin: 10px 0px;
 }
 #headlist {
-	border-bottom:1px solid #999;
-	width:100%;
+	border-bottom:2px solid #999;
+	width:98%;
 	clear:both;
 	font-weight:bold;
+	margin-right:20pt;
 }
 .weekhead {
 	padding-top:15px;
 }
 #weekgames {
+	width:98%;
 	text-align:center;
 	padding: 5px 0px;
 }
@@ -137,30 +146,38 @@ a {
 	font:
 }
 .dW {
-	border:1px solid #099acb;
-	background: #099acb;
+	border:3px solid #099acb;
+	background:none;
 }
 .win {
-	border: 1px solid green;
+	/*border: 1px solid green;*/	
 }
 .lose {
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 }
 #gamewrap {
 	width:100%;
 	clear:both;
+	border-bottom:1px solid #4f4f4f;
 }
 .locked {
 	cursor:auto;
 }
-#winel {
-	float:left;
-	width:25%;
+#rank {
+ float:left;
+ width:8%;
+ padding-top:5px;
 }
-
+#winel {
+ float:left;
+ width:23%;
+ padding-top: 5px;
+}
 #winline {
-	clear:both;
-	width:100%;
+ clear:both;
+ width:100%;
+ height:30px;
+ 
 }
 #successTip {
 	background:#099acb;
@@ -185,7 +202,7 @@ a {
 	height:43px;
 }
 #spoiler, #theme{
- background:#EDEDED;
+ background:#ba9056;
  height:30px;
  width:120px;
  float:right;
@@ -213,4 +230,124 @@ a {
 .welcome {
 	color:#fff;
 	line-height:2;
+}
+.logo67 {
+	background:url("pic/67.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo67win {
+	background:url("pic/67win.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo67lose {
+	background:url("pic/67lose.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo68 {
+	background:url("pic/68.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo68win {
+	background:url("pic/68win.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo68lose {
+	background:url("pic/68lose.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo69 {
+	background:url("pic/69.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo69win {
+	background:url("pic/69win.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo69lose {
+	background:url("pic/69lose.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo70 {
+	background:url("pic/70.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo70win {
+	background:url("pic/70win.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo70lose {
+	background:url("pic/70lose.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo589 {
+	background:url("pic/589.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo589win {
+	background:url("pic/589win.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo589lose {
+	background:url("pic/589lose.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo1100 {
+	background:url("pic/1100.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo1100win {
+	background:url("pic/1100win.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo1100lose {
+	background:url("pic/1100lose.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo1242 {
+	background:url("pic/1242.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo1242win {
+	background:url("pic/1242win.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo1242lose {
+	background:url("pic/1242lose.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo1243{
+	background:url("pic/1243.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo1243win{
+	background:url("pic/1243win.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
+}
+.logo1243lose{
+	background:url("pic/1243lose.png") no-repeat;
+	background-size:15% auto;
+	background-position:2px;
 }

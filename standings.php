@@ -12,7 +12,7 @@ function draw() {
 		$team[$row['rID']] = $row['name'];
 	}
 	//Headerline
-	echo "<div id='winline'>
+	echo "<div id='winline' class='titleline'>
 			<div id='rank'>Rank</div>
 			<div id='winel'>Team</div>
 			<div id='winel'>Wins</div>
