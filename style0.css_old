@@ -10,7 +10,8 @@ body {
     -moz-transition: all 0.4s;
 	-o-transition: all 0.4s;
 	transition: all 0.4s;
-	background: url("pic/Front1.jpg")  no-repeat;
+	background-image: url("pic/Front1.jpg"), url("pic/unendlich.jpg");
+	background-repeat:no-repeat,repeat-y;
 	background-position:center top;
 }
 a {
@@ -26,17 +27,18 @@ a {
 .logininput  { 
 	font-size: 16px;
 	font-weight:300;
+	color: #707070;
 	margin-bottom:3px;
 	vertical-align: bottom;
 	border:none;
 	outline:none;
 	background:none;
-	color:#fff;
 }
 .hover:hover{
+
 }
 .login-border-bottom {
-	width:40%;
+	width:20%;
 	float:left;
 	border-bottom:1px solid #CCC;
 	margin-left:5px;
@@ -185,7 +187,7 @@ a {
 	-o-transition: all 0.4s;
 	transition: all 0.4s;
 	position:absolute;
-	left:2%;
+	left:45%;
 	height:25px;
 	width:200px;
 	top:2%;

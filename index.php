@@ -86,7 +86,8 @@ function draw() {
 				$aktiv2 = 0;
 				$class1 = "";
 				$class2 = "";
-				
+				$logo1 = "logo".$row["t1"];
+				$logo2 = "logo".$row["t2"];
 				if(isset($_SESSION['uid']) && $_SESSION['uid'] != -1) { //user logged in?
 					if($tippid[$row['id']] != 0 && $tippteam[$row["id"]] == $row["t1"]) { //is team1 the tipped team?
 						$aktiv1 = 1;
@@ -97,8 +98,6 @@ function draw() {
 						$class2 = "derTipp";
 						$tippT = $tippid[$row["id"]];
 					}
-					$logo1 = "logo".$row["t1"];
-					$logo2 = "logo".$row["t2"];
 					if($row["t1"] == $row["wt"] && $_SESSION['spoiler'] == 0) { //the tip was right
 						$class1 .= " win";
 						$class2 .= " lose";
